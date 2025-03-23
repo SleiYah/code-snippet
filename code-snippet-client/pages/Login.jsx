@@ -41,8 +41,10 @@ const Login = () => {
       const data = response.data;
       if (data.success === true) {
         localStorage.setItem("token", data.user.token);
+        localStorage.setItem("user_id", data.user.id);
 
-        navigate("/gallery");
+
+        navigate("/snippets");
       } else {
         console.log("response",response.data.user.success)
         setError(data.message || response);
