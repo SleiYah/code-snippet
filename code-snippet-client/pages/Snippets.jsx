@@ -34,7 +34,6 @@ const Snippets = () => {
     fetchTags();
   }, [user, navigate]);
   
-  // Apply filters whenever snippets, favorites filter, or tag selection changes
   useEffect(() => {
     applyFilters();
   }, [snippets, showFavoritesOnly, selectedTag]);
@@ -42,7 +41,6 @@ const Snippets = () => {
   const applyFilters = () => {
     let results = [...snippets];
     
-    // Filter by favorites if enabled
     if (showFavoritesOnly) {
       results = results.filter(snippet => snippet.favorite);
     }
