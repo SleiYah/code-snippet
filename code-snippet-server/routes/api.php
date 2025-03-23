@@ -9,6 +9,7 @@ Route::group(["prefix" => "v0.1"], function () {
 	Route::group(["middleware" => "auth:api"], function () {
 		Route::group(["prefix" => "user"], function () {
 			Route::get('/getSnippets/{id}', [SnippetController::class, "getSnippets"]);
+			Route::get('/getSnippetById/{id}', [SnippetController::class, "getSnippetById"]);
 			Route::post('/addOrUpdateSnippet/{id?}', [SnippetController::class, "addOrUpdateSnippet"]);
 			Route::post('/deleteSnippet/{id}', [SnippetController::class, "deleteSnippet"]);
 			Route::post('/search', [SnippetController::class, "search"]);

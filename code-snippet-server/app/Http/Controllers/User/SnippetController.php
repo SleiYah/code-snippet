@@ -18,6 +18,15 @@ class SnippetController extends Controller
             "snippets" => $snippets,
         ]);
     }
+    function getSnippetById(string $id)
+    {
+        $snippet = Snippet::with('tags')->find($id);
+
+        return response()->json([
+            "success" => true,
+            "snippet" => $snippet,
+        ]);
+    }
     function addOrUpdateSnippet(Request $request, $id = null)
     {
 
