@@ -7,12 +7,16 @@ use App\Http\Controllers\User\SnippetController;
 Route::group(["prefix" => "v0.1"], function () {
 	Route::group(["middleware" => "auth:api"], function () {
 		Route::group(["prefix" => "user"], function () {
-			Route::get('/getSnippets', [SnippetController::class, "getSnippets"]);
+			Route::get('/getSnippets/{id}', [SnippetController::class, "getSnippets"]);
+			Route::post('/addOrUpdateSnippet/{id?}', [SnippetController::class, "addOrUpdateSnippet"]);
+			Route::post('/deleteSnippet/{id}', [SnippetController::class, "deleteSnippet"]);
+			Route::post('/search', [SnippetController::class, "search"]);
 
 		});
 	});
 	Route::group(["prefix" => "guest"], function(){
         Route::post('/login', [AuthController::class, "login"]);
         Route::post('/signup', [AuthController::class, "signup"]);
+
  });
 });
