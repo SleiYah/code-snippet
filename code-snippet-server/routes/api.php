@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\User\TagController;
 use App\Http\Controllers\User\SnippetController;
 
 Route::group(["prefix" => "v0.1"], function () {
@@ -11,6 +12,9 @@ Route::group(["prefix" => "v0.1"], function () {
 			Route::post('/addOrUpdateSnippet/{id?}', [SnippetController::class, "addOrUpdateSnippet"]);
 			Route::post('/deleteSnippet/{id}', [SnippetController::class, "deleteSnippet"]);
 			Route::post('/search', [SnippetController::class, "search"]);
+			Route::get('/getTags/{id}', [TagController::class, "getTags"]);
+			Route::post('/getSnippetsByTag/{tagId}', [TagController::class, "getSnippetsByTag"]);
+
 
 		});
 	});

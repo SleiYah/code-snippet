@@ -52,11 +52,11 @@ class SnippetController extends Controller
         }
 
         $snippet->tags()->sync($tagIds);
-        $tags = Tag::whereIn('id', $tagIds)->get();
+        $snippet = Snippet::with('tags')->find($snippet->id);
+
 
         return response()->json([
             'snippet' => $snippet,
-            'tags' => $tags
         ]);
     }
     public function deleteSnippet($id)
